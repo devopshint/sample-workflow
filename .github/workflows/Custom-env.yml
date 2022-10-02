@@ -5,7 +5,7 @@ on: push
 env:
   SUBSCRIBE: Subscribe
 
-Jobs:
+jobs:
   Subscribe-my-channel:
     runs-on: ubuntu-latest
     env:

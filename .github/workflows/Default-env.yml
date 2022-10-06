@@ -6,6 +6,11 @@ jobs:
   default-env-variables:
     runs-on: ubuntu-latest
     steps:
+      - name: Testing Secrets
+        run: |
+          echo "$DEVOPS"
+        env:
+          DEVOPS: ${{ secrets.SECRETS_TOKEN }}
       - name: Environment variables
         run: |
           echo "GITHUB_ACTION: ${GITHUB_ACTION}"

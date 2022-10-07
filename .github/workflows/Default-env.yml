@@ -3,7 +3,17 @@ name: Default Environment variables
 on: push
 
 jobs:
-  
+  Decrypt:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Decrypt File
+        run: gpg --quiet --batch --yes --decrypt --passphrase="$PASSPHRASE" --output $HOME/index.php index.php.gpg
+        env:
+          PASSPHRASE: ${{ secrets.PASSPHRASE }}
+      - name: Print out file content
+        run: cat $HOME/index.php
+
   default-env-variables:
     runs-on: ubuntu-latest
     steps:

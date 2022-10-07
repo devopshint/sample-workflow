@@ -8,7 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Decrypt File
-        run: gpg --quiet --batch --yes --decrypt --passphrase="$PASSPHRASE" --output $HOME/index.php index.php.gpg
+        run: gpg --quiet --batch --yes --decrypt --passphrase="$PASSPHRASE" --output $HOME/index.php sample/index.php.gpg
         env:
           PASSPHRASE: ${{ secrets.PASSPHRASE }}
       - name: Print out file content

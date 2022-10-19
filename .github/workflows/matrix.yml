@@ -10,18 +10,18 @@ jobs:
 
         include:
           - os: ubuntu-latest
-            node_version: 7
+            node_version: 8
             is_ubuntu-8: "true"
         exclude:
           - os: ubuntu-latest
-            node_version: 7
-          - os: macos-latest
             node_version: 6
+          - os: macos-latest
+            node_version: 8
 
         
     runs-on: ${{ matrix.os }}
     env:
-      IS_UBUNTU_8: ${{ matrix.is_ubuntu-8 }}
+      IS_UBUNTU_8: ${{ MATRIX.IS_UBUNTU_8 }}
     steps:
       - name: Node version
         run: node -v

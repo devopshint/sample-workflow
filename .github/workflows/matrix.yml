@@ -7,22 +7,7 @@ jobs:
       matrix:
         os: [macos-latest, windows-latest, ubuntu-latest]
         node-version: [6, 7, 8]
-
-        include:
-          - os: ubuntu-latest
-            node_version: 8
-            ubuntu_8 : "true"
-
-        exclude:
-          - os: ubuntu-latest
-            node_version: 6
-          - os: macos-latest
-            node_version: 8
-
     runs-on: ${{ matrix.os }}
-    env:
-      UBUNTU_8: ${{ matrix.ubuntu_8 }}
-    
     steps:
       - name: Node version
         run: node -v
@@ -30,8 +15,6 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: After Setup-node node version
-        run: |
-          node -v
-          echo $ubuntu_8
+        run: node -v
 
     

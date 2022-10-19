@@ -7,16 +7,18 @@ jobs:
       matrix:
         os: [macos-latest, windows-latest, ubuntu-latest]
         node-version: [6, 7, 8]
+
+        include:
+          - os: ubuntu-latest
+            node_version: 7
+            is_ubuntu-8: "true"
         exclude:
           - os: ubuntu-latest
             node_version: 7
           - os: macos-latest
             node_version: 6
 
-        include:
-          - os: ubuntu-latest
-            node_version: 7
-            is_ubuntu-8: "true"
+        
     runs-on: ${{ matrix.os }}
     env:
       IS_UBUNTU_8: ${{ matrix.is_ubuntu-8 }}

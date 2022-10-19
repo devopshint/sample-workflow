@@ -1,31 +1,36 @@
-name: matrix testing
+name: matrix
 on: push
 
 jobs:
-  node_version:
+  Node-versions:
     strategy:
       matrix:
-        os: [macos-latest, ubuntu-latest, windows-latest]
-        node_version: [6, 8, 10]
+        os: [macos-latest, windows-latest, ubuntu-latest]
+        node-version: [6, 8, 10]
+
         include:
           - os: ubuntu-latest
             node_version: 8
-            is_ubuntu_8: "true"
+            is_ubuntu-8: "true"
         exclude:
           - os: ubuntu-latest
             node_version: 6
           - os: macos-latest
             node_version: 8
+
+        
     runs-on: ${{ matrix.os }}
     env:
       IS_UBUNTU_8: ${{ MATRIX.IS_UBUNTU_8 }}
     steps:
-      - name: node version
+      - name: Node version
         run: node -v
       - uses: actions/setup-node@v1
         with:
-          node-version: ${{ matrix.node_version }}
-      - name: node version
+          node-version: ${{ matrix.node-version }}
+      - name: After Setup-node node version
         run: |
           node -v
           echo $IS_UBUNTU_8
+
+    
